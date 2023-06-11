@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>지리 데이터 사용 예시</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
+  <style>
+    #map {
+      height: 400px;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+  <!--<script src="script.js"></script>-->
+  <script>
+		// 지도를 생성하고 위치 설정
+		var map = L.map('map').setView([37.4979, 127.0276], 13);
+
+		// 지도 타일 레이어 추가
+		L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		  attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
+		}).addTo(map);
+
+		// 마커 생성 및 추가
+		var marker = L.marker([37.4979, 127.0276]).addTo(map);
+
+		// 팝업 추가
+		marker.bindPopup("<b>한국 서울시 강남구</b>").openPopup();
+  </script>
+</body>
+</html>
