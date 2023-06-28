@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>엑셀 특정 단어를 기준으로 단어 앞 문장 추출하기</title>
+    <meta charset="UTF-8">
+    <style>
+        #before {width:500px; height:400px;}
+    </style>
+</head>
+
+<body>
+<span> <a href="https://blog.naver.com/djsudaqw/223139134164">https://blog.naver.com/djsudaqw/223139134164</a></span><br><br>
+함수를 적용할 원본 데이터가 있는 위치를 입력하세요<br><br>만약 R25에 있는 데이터를 변경할 경우 <br>열: R <br>행: 25<br>키워드 : <br>를 입력하세요<br><br>
+    <label for="columnInput">열:</label>
+    <input type="text" id="columnInput" />
+    <label for="rowInput">행:</label>
+    <input type="text" id="rowInput" />
+    <label for="keywordInput">키워드:</label>
+    <input type="text" id="keywordInput" />
+
+    <button id="convertButton">변환</button>
+    <br><br>
+    <div id="before">
+		=IF(ISNUMBER(SEARCH(﻿"<span class="keyword">please</span>"﻿, <span class="column">A</span>﻿<span class="row">1</span>,1)), IF(SEARCH(﻿"<span class="keyword">please</span>"﻿, <span class="column">A</span>﻿<span class="row">1</span>,1)=1, "No data", LEFT(A1, SEARCH(﻿"<span class="keyword">please</span>"﻿, <span class="column">A</span>﻿<span class="row">1</span>,1) - 1)), "No data")
+	</div>
+
+    <script>
+        const columnInput = document.getElementById("columnInput");
+        const rowInput = document.getElementById("rowInput");
+        const keywordInput = document.getElementById("keywordInput");
+        const convertButton = document.getElementById("convertButton");
+        const beforeDiv = document.getElementById("before");
+
+        convertButton.addEventListener("click", () => {
+            const columnValue = columnInput.value;
+            const rowValue = rowInput.value;
+            const keywordValue = keywordInput.value;
+
+            const columnSpans = document.getElementsByClassName("column");
+            const rowSpans = document.getElementsByClassName("row");
+            const keywordSpans = document.getElementsByClassName("keyword");
+
+            for (let i = 0; i < columnSpans.length; i++) {
+                columnSpans[i].textContent = columnValue;
+            }
+
+            for (let i = 0; i < rowSpans.length; i++) {
+                rowSpans[i].textContent = rowValue;
+            }
+
+            for (let i = 0; i < keywordSpans.length; i++) {
+                keywordSpans[i].textContent = keywordValue;
+            }
+        });
+    </script>
+</body>
+</html>
