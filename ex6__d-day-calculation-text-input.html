@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>D데이 카운터</title>
+  <meta charset="UTF-8">
+  <script src="script.js"></script>
+	<script>
+	function calculateTime() {
+	  // D데이 날짜 입력 필드에서 날짜 가져오기
+	  var dDayDateInput = document.getElementById("dDayDate");
+	  var dDayDateString = dDayDateInput.value;
+
+	  // D데이 날짜 파싱하여 객체 생성
+	  var dDayDateParts = dDayDateString.split("/");
+	  var dDayYear = parseInt(dDayDateParts[0]);
+	  var dDayMonth = parseInt(dDayDateParts[1]) - 1; // 월은 0부터 시작하므로 1을 뺍니다.
+	  var dDayDay = parseInt(dDayDateParts[2]);
+	  var dDayDate = new Date(dDayYear, dDayMonth, dDayDay);
+
+	  // 현재 날짜와 시간 가져오기
+	  var currentDate = new Date();
+
+	  // D데이까지 남은 시간 계산
+	  var timeDiff = dDayDate.getTime() - currentDate.getTime();
+
+	  // 남은 일수 계산 (밀리초를 일수로 변환)
+	  var daysLeft = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+
+	  // 남은 분 계산 (밀리초를 분으로 변환)
+	  var minutesLeft = Math.floor(timeDiff / (1000 * 60));
+
+	  // 결과 출력
+	  document.getElementById("daysLeft").textContent = "D데이까지 남은 일수: " + daysLeft + "일";
+	  document.getElementById("minutesLeft").textContent = "D데이까지 남은 분: " + minutesLeft + "분";
+	}
+	</script>
+</head>
+<body>
+  <h1>D데이까지 남은 시간</h1>
+  <label for="dDayDate">D데이 날짜:</label>
+  <input type="text" id="dDayDate" placeholder="YYYY/MM/DD">
+  <button onclick="calculateTime()">시간 계산</button>
+  <p id="daysLeft"></p>
+  <p id="minutesLeft"></p>
+</body>
+</html>
