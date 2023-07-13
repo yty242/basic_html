@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>D데이 카운터</title>
+  <meta charset="UTF-8">
+  <script src="script.js"></script>
+  <script>
+	  window.onload = function() {
+	  // D데이 날짜 설정 (YYYY, MM, DD 형식으로 입력)
+	  var dDayDate = new Date(2023, 7, 31);
+
+	  // 현재 날짜와 시간 가져오기
+	  var currentDate = new Date();
+
+	  // D데이까지 남은 시간 계산
+	  var timeDiff = dDayDate.getTime() - currentDate.getTime();
+
+	  // 남은 일수 계산 (밀리초를 일수로 변환)
+	  var daysLeft = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+
+	  // 남은 분 계산 (밀리초를 분으로 변환)
+	  var minutesLeft = Math.floor(timeDiff / (1000 * 60));
+
+	  // 결과 출력
+	  document.getElementById("daysLeft").textContent = "D데이까지 남은 일수: " + daysLeft + "일";
+	  document.getElementById("minutesLeft").textContent = "D데이까지 남은 분: " + minutesLeft + "분";
+	};
+  </script>
+</head>
+<body>
+  <h1>D데이(2023-07-31) 까지 남은 시간</h1>
+  <p id="daysLeft"></p>
+  <p id="minutesLeft"></p>
+</body>
+</html>
+
