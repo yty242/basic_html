@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>문자를 16진수로 변환 (String to Hexadecimal Conversion)</title>
+    <style>
+        #inputText {
+            margin-bottom: 10px;
+        }
+        #hexResult {
+            font-family: monospace;
+            white-space: pre;
+            background-color: #f4f4f4;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="inputText" placeholder="문자를 입력하세요">
+    <button onclick="convertToHex()">변환</button>
+    <div id="hexResult"></div>
+
+    <script>
+    function stringToHex(input) {
+        let hexResult = "";
+        for (let i = 0; i < input.length; i++) {
+            hexResult += input[i].charCodeAt(0).toString(16).toUpperCase();
+        }
+        return hexResult;
+    }
+
+    function convertToHex() {
+        const inputText = document.getElementById('inputText').value;
+        const hexResult = stringToHex(inputText);
+        
+        const resultDiv = document.getElementById('hexResult');
+        resultDiv.textContent = `16진수: ${hexResult}`;
+    }
+    </script>
+</body>
+</html>
