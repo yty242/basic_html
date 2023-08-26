@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>십진수를 이진수로 변환 (Decimal to Binary Converter)</title>
+    <style>
+        h2 {
+            background-color: yellow;
+            color: black;
+        }
+        h2 a {
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <h5><a href="https://blog.naver.com/djsudaqw">네이버 블로그 : 시간 낭비 하지마.. 복붙은 필수! 나머지 공부는 선택</a></h5>
+    <h2><a href="https://blog.naver.com/djsudaqw/223193856185">십진수를 이진수로 변환 (Decimal to Binary Converter)</a></h2>
+
+    <label for="decimalInput">십진수를 입력하세여 (Enter a decimal number): </label>
+    <input type="number" id="decimalInput">
+    <button onclick="convertToBinary()">Convert to Binary</button>
+    <p id="binaryResult"></p>
+
+    <script>
+        function convertToBinary() {
+            const decimalInput = parseInt(document.getElementById("decimalInput").value);
+            const binaryResult = decimalInput.toString(2);
+            document.getElementById("binaryResult").textContent = `Binary result: ${binaryResult}`;
+        }
+    </script>
+</body>
+</html>
