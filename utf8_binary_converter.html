@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>UTF-8 Encoding Example</title>
+    <style>
+        #inputText {
+            margin-bottom: 10px;
+        }
+        #binaryResult {
+            font-family: monospace;
+            white-space: pre;
+            background-color: #f4f4f4;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="inputText" placeholder="문자를 입력하세요">
+    <button onclick="encodeAndDisplay()">변환</button>
+    <div id="binaryResult"></div>
+
+    <script>
+    function utf8ToBinary(text) {
+        const utf8Bytes = new TextEncoder().encode(text);
+
+        let binaryRepresentation = '';
+        for (const byte of utf8Bytes) {
+            binaryRepresentation += byte.toString(2).padStart(8, '0');
+        }
+
+        return binaryRepresentation;
+    }
+
+    function encodeAndDisplay() {
+        const inputText = document.getElementById('inputText').value;
+        const binaryResult = utf8ToBinary(inputText);
+        
+        const resultDiv = document.getElementById('binaryResult');
+        resultDiv.textContent = binaryResult;
+    }
+    </script>
+</body>
+</html>
