@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>(엑셀수식) 문장의 맨 뒤에 마침표가 없는 경우 마침표를 추가하는 수식</title>
+</head>
+<body>
+    <h1>(엑셀수식) 문장의 맨 뒤에 마침표가 없는 경우 마침표를 추가하는 수식</h1>
+	<p>변경할 데이터가 있는 열과 행을 입력해주세요. </p>
+	<p>(예) H4 셀에 있는 데이터를 변경시 열에 H 행에 4를 입력하세요. </p>
+    <form id="formulaForm">
+        <label for="columnInput">열 (Column):</label>
+        <input type="text" id="columnInput" name="columnInput">
+        <label for="rowInput">행 (Row):</label>
+        <input type="text" id="rowInput" name="rowInput">
+        <button type="button" onclick="generateFormula()">수식 생성</button>
+    </form>
+    <p id="formulaResult"></p>
+
+    <script>
+		function generateFormula() {
+    const column = document.getElementById("columnInput").value;
+    const row = document.getElementById("rowInput").value;
+
+    if (column && row) {
+        const formula = `=IF(RIGHT(${column}${row}, 1) <> ".", ${column}${row} & ".", ${column}${row})`;
+        document.getElementById("formulaResult").innerText = formula;
+    } else {
+        document.getElementById("formulaResult").innerText = "열과 행을 입력하세요.";
+    }
+}
+
+    </script>
+</body>
+</html>
